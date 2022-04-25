@@ -86,7 +86,9 @@ def main():
         total_vertices+=obj['vertex']
 
     vertices = np.zeros(len(total_vertices), [('position', np.float32, 2)])
+    # print(repr(vertices))
     vertices['position'] = total_vertices
+    # print(repr(vertices))
 
     buffer_data(program, vertices)
 
@@ -95,6 +97,7 @@ def main():
 
     while not glfw.window_should_close(window):
 
+        glfw.swap_buffers(window)
         glfw.poll_events() 
         
         glClear(GL_COLOR_BUFFER_BIT) 
@@ -115,7 +118,6 @@ def main():
             glDrawArrays(obj['mode'], vertex_acc, len(obj['vertex']))
             vertex_acc += len(obj['vertex'])
 
-            glfw.swap_buffers(window)
 
     glfw.terminate()
 
