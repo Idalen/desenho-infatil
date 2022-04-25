@@ -2,7 +2,7 @@ import glfw
 from OpenGL.GL import *
 import OpenGL.GL.shaders
 import numpy as np
-from Objects import get_tree, get_house
+from objects import *
 
 def init_window():
     glfw.init()
@@ -79,8 +79,8 @@ def main():
     program = init_program()
 
     objects = []
-    objects+=(get_tree(-0.2, -0.5))
-    objects+=(get_house(0.0, 0.0))
+    objects+=(tree.get_tree(-0.2, -0.5))
+    objects+=(house.get_house(0.0, 0.0))
     total_vertices = []
     for obj in objects:
         total_vertices+=obj['vertex']
