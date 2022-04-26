@@ -3,10 +3,10 @@ from .base import *
 def get_tree(position_x, position_y):
     
     trunk = {
-        "vertex" : [(-0.875, +0.25),
+        "vertex" : make_pair_vec([(-0.875, +0.25),
                     (-0.825, +0.25),
                     (-0.825, +0.45),
-                    (-0.875, +0.45)],
+                    (-0.875, +0.45)]),
         "translation": (position_x, position_y),
         "color" : { "R":164.0/255,
                     "G":116.0/255,
@@ -15,9 +15,9 @@ def get_tree(position_x, position_y):
     }
 
     leaves = {
-        "vertex" : [(-0.9, 0.45),
+        "vertex" : make_pair_vec([(-0.9, 0.45),
                     (-0.85, 0.95), 
-                    (-0.8, 0.45)],
+                    (-0.8, 0.45)]),
         "translation": (position_x, position_y),
         "color" : { "R":97.0/255,
                     "G":138.0/255, 

@@ -86,7 +86,8 @@ def main():
     objects += (sun.get_sun(0.0, 0.0))
     objects += (car.get_car(0.7, 0.8))
     objects += (woman.get_woman(-0.7, -0.8))
-    objects+=(surface.get_surface())
+    objects += (surface.get_surface())
+
 
     to_callback = []
     for obj in objects:
@@ -98,7 +99,8 @@ def main():
             obj['translation'], obj['rotation'] = obj['update'](obj['translation'], obj['rotation'], key)
     
     glfw.set_key_callback(window, key_event)
-
+    for obj in objects:
+        print(obj['vertex'])
     vertices = np.concatenate([obj['vertex'] for obj in objects])
     buffer_data(program, vertices)
 
