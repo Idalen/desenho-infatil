@@ -19,6 +19,7 @@ def get_woman(position_x, position_y):
         ),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
+        'scaling' : (1., 1.),
         "color" : { "R":1.,
                     "G":0., 
                     "B":0.},
@@ -34,6 +35,8 @@ def get_woman(position_x, position_y):
         ),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
+        'scaling' : (1., 1.),
+        
         "color" : { "R":0.,
                     "G":0., 
                     "B":0.},
@@ -49,6 +52,8 @@ def get_woman(position_x, position_y):
         ),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
+        'scaling' : (1., 1.),
+        
         "color" : { "R":0.,
                     "G":0., 
                     "B":0.},
@@ -64,6 +69,8 @@ def get_woman(position_x, position_y):
         ),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
+        'scaling' : (1., 1.),
+        
         "color" : { "R":0.,
                     "G":0., 
                     "B":0.},
@@ -79,6 +86,8 @@ def get_woman(position_x, position_y):
         ),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
+        'scaling' : (1., 1.),
+        
         "color" : { "R":0.,
                     "G":0., 
                     "B":0.},
@@ -93,6 +102,8 @@ def get_woman(position_x, position_y):
         "vertex" : np.zeros(n_vertex, POSITION_DT),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
+        'scaling' : (1., 1.),
+        
         "color" : { "R":0.,
                     "G":0., 
                     "B":0.},

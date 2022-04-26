@@ -139,7 +139,13 @@ def main():
                                         0.0, 0.0, 1.0, 0.0, 
                                         0.0, 0.0, 0.0, 1.0], np.float32)
 
-            mat_transform = mat_translation.reshape((4, 4)) @ mat_rotation.reshape((4, 4))
+            mat_scaling = np.array([    obj['scaling'][0], 0.0, 0.0, 0.0, 
+                                        0.0, obj['scaling'][1], 0.0, 0.0, 
+                                        0.0, 0.0,            1.0, 0.0, 
+                                        0.0, 0.0,            0.0, 1.0], np.float32)
+            
+
+            mat_transform = mat_translation.reshape((4, 4)) @ mat_rotation.reshape((4, 4)) @ mat_scaling.reshape((4, 4))
             print(mat_transform)
             loc = glGetUniformLocation(program, "mat_transformation")
             glUniformMatrix4fv(loc, 1, GL_TRUE, mat_transform)
