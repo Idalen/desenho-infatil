@@ -2,35 +2,31 @@ from .base import *
  
 def _update_trunk(translation, rotation, scaling, key):
     if key == 265:
-        translation = (translation[0], translation[1]-0.00125)
+        translation = (translation[0], translation[1]+0.002)
+        scaling = (scaling[0], scaling[1]+0.02)
     if key == 264:
-        translation = (translation[0], translation[1]-0.00125)
-    if key == 90:
-        scaling = (scaling[0], scaling[1]+0.005)
-    if key == 88:
-        scaling = (scaling[0], scaling[1]-0.005)
+        translation = (translation[0], translation[1]-0.002)
+        scaling = (scaling[0], scaling[1]-0.02)
+
         
     return translation, rotation, scaling
 
 def _update_leaves(translation, rotation, scaling, key):
     if key == 265:
-        translation = (translation[0], translation[1]+0.0005)
+        translation = (translation[0], translation[1]+0.002)
     if key == 264:
-        translation = (translation[0], translation[1]-0.0005)
-    if key == 90:
-        scaling = (scaling[0], scaling[1]+0.005)
-    if key == 88:
-        scaling = (scaling[0], scaling[1]-0.005)
+        translation = (translation[0], translation[1]-0.002)
+
     
     return translation, rotation, scaling
 def get_tree(position_x, position_y):
     
     trunk = {
         "vertex" : make_pair_vec([
-            (-0.025, -0.35),
-            (+0.025, -0.35),
-            (+0.025, +0.35),
-            (-0.025, +0.35)
+            (-0.025, -0.1),
+            (+0.025, -0.1),
+            (+0.025, +0.1),
+            (-0.025, +0.1)
         ]),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
@@ -44,9 +40,9 @@ def get_tree(position_x, position_y):
 
     leaves = {
         "vertex" : make_pair_vec([
-            (+0.05, 0.25),
-            (0, 0.75), 
-            (-0.05, 0.25)
+            (+0.05, 0.1),
+            (0, 0.6), 
+            (-0.05, 0.1)
         ]),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
