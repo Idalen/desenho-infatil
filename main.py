@@ -3,6 +3,8 @@ from OpenGL.GL import *
 import OpenGL.GL.shaders
 import numpy as np
 from Objects import get_tree, get_house
+from Tree import get_tree
+from Woman import get_woman
 
 def init_window():
     glfw.init()
@@ -81,6 +83,7 @@ def main():
     objects = []
     objects+=(get_tree(-0.2, -0.5))
     objects+=(get_house(0.0, 0.0))
+    objects+=(get_woman(0.5, 0.0))
     total_vertices = []
     for obj in objects:
         total_vertices+=obj['vertex']
@@ -115,7 +118,7 @@ def main():
             glDrawArrays(obj['mode'], vertex_acc, len(obj['vertex']))
             vertex_acc += len(obj['vertex'])
 
-            glfw.swap_buffers(window)
+        glfw.swap_buffers(window)
 
     glfw.terminate()
 
