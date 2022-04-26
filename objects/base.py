@@ -5,7 +5,9 @@ import numpy as np
 import math
 
 POSITION_DT= np.dtype([('position', np.float32, 2)])
+
 DEG_IN_RAD = math.pi / 180.0
+UPD_STATIC = lambda a, b, _: (a, b)
 
 def make_pair_vec(v):
     arr = np.zeros(len(v), POSITION_DT)
