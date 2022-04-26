@@ -84,22 +84,24 @@ def main():
 
     
     objects += (house.get_house(0.0, 0.0))
+    objects += (tree.get_tree(-0.8, 0.35))
     objects += (car.get_car(0.0, 0.4))
     objects += (woman.get_woman(-0.7, -0.8))
     objects += (surface.get_surface())
     objects += (sun.get_sun(0.0, 0.0))
-    objects += (tree.get_tree(-0.8, 0.35))
 
     to_callback = []
     for obj in objects:
         if 'update' in obj:
             to_callback.append(obj)
     
+    # input
     def key_event(window, key, scancode, action, mods):
         for obj in to_callback:
             obj['translation'], obj['rotation'], obj['scaling'] = obj['update'](obj['translation'], obj['rotation'], obj['scaling'],key)
     
     glfw.set_key_callback(window, key_event)
+
     vertices = np.concatenate([obj['vertex'] for obj in objects])
     buffer_data(program, vertices)
 
@@ -114,6 +116,12 @@ def main():
         glClearColor(135/255, 206/255, 235/255, 1.0)
 
         vertex_acc = 0
+
+        # Always rotate sun
+        for obj in objects:
+            if 'constant' in obj:
+                obj['rotation'] = obj['constant'](obj['rotation'], 0.005)
+
         for obj in objects:
             mat_translation = np.array([1.0, 0.0, 0.0, obj["translation"][0], 
                                         0.0, 1.0, 0.0, obj["translation"][1], 
