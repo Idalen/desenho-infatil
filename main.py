@@ -3,6 +3,7 @@ from OpenGL.GL import *
 import OpenGL.GL.shaders
 import numpy as np
 from objects import *
+import math
 
 def init_window():
     glfw.init()
@@ -83,7 +84,7 @@ def main():
 
     objects += (tree.get_tree(0.0, 0.0))
     objects += (house.get_house(0.0, 0.0))
-    #objects += (car.get_car(0.7, 0.8))
+    objects += (car.get_car(0.7, 0.8))
     objects += (woman.get_woman(-0.7, -0.8))
     objects += (surface.get_surface())
     objects += (sun.get_sun(0.0, 0.0))
@@ -108,7 +109,6 @@ def main():
 
     while not glfw.window_should_close(window):
 
-        glfw.swap_buffers(window)
         glfw.poll_events() 
         
         glClear(GL_COLOR_BUFFER_BIT) 
@@ -120,15 +120,23 @@ def main():
                                         0.0, 1.0, 0.0, obj["translation"][1], 
                                         0.0, 0.0, 1.0, 0.0, 
                                         0.0, 0.0, 0.0, 1.0], np.float32)
-        
-            loc = glGetUniformLocation(program, "mat_transformation")
-            glUniformMatrix4fv(loc, 1, GL_TRUE, mat_translation)
 
+
+            mat_rotation = np.array([   math.cos(obj['rotation']), -math.sin(obj['rotation']), 0.0, 0.0, 
+                                        math.sin(obj['rotation']), math.cos(obj['rotation']), 0.0, 0.0, 
+                                        0.0, 0.0, 1.0, 0.0, 
+                                        0.0, 0.0, 0.0, 1.0], np.float32)
+
+            mat_transform = mat_translation.reshape((4, 4)) @ mat_rotation.reshape((4, 4))
+            print(mat_transform)
+            loc = glGetUniformLocation(program, "mat_transformation")
+            glUniformMatrix4fv(loc, 1, GL_TRUE, mat_transform)
             glUniform4f(loc_color, obj['color']['R'], obj['color']['G'], obj['color']['B'], 1.0)
             glDrawArrays(obj['mode'], vertex_acc, len(obj['vertex']))
             vertex_acc += len(obj['vertex'])
 
-
+        glfw.swap_buffers(window)
+        
     glfw.terminate()
 
 
