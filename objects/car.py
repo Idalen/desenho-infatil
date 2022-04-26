@@ -6,15 +6,15 @@ def get_car(position_x, position_y):
     triangleMaxDeg = 28
     degCounter = 0
 
-    def upd_func_body(trans, rot, keypress):
+    def upd_func_body(trans, rot, scaling,keypress):
         if keypress == 263:
             trans = (trans[0] - 0.01, trans[1])
         elif keypress == 262:
             trans = (trans[0] + 0.01, trans[1])
 
-        return trans, rot
+        return trans, rot, scaling
 
-    def upd_func_wheel(trans, rot, keypress):
+    def upd_func_wheel(trans, rot, scaling,keypress):
         if keypress == 263:
             trans = (trans[0] - 0.01, trans[1])
         elif keypress == 262:
@@ -24,7 +24,7 @@ def get_car(position_x, position_y):
         elif keypress == 83:
             rot -= 0.1
         
-        return trans, rot
+        return trans, rot, scaling
 
 
     body = {
@@ -41,6 +41,7 @@ def get_car(position_x, position_y):
         ]),
         'translation' : (position_x, position_y),
         'rotation' : 0.0,
+        'scaling' : (1., 1.),
         'color' : {"R":.78,
                    "G":.39, 
                    "B":.33},
@@ -88,6 +89,7 @@ def get_car(position_x, position_y):
         'vertex' : wheel_in,
         'translation' : (position_x-0.15, position_y-0.10),
         'rotation' : 0.,
+        'scaling' : (1., 1.),
         'color' : wheel_in_color,
         'mode' : GL_POLYGON,
         'update': upd_func_wheel
@@ -97,6 +99,7 @@ def get_car(position_x, position_y):
         'vertex' : wheel_in2,
         'translation' : (position_x+0.15, position_y-0.10),
         'rotation' : 0.,
+        'scaling' : (1., 1.),
         'color' : wheel_in_color,
         'mode' : GL_POLYGON,
         'update': upd_func_wheel
@@ -106,6 +109,7 @@ def get_car(position_x, position_y):
         'vertex' : wheel,
         'translation' : (position_x-0.15, position_y-0.10),
         'rotation' : 0.,
+        'scaling' : (1., 1.),
         'color' : wheel_out_color,
         'mode' : GL_POLYGON,
         'update': upd_func_wheel
@@ -114,6 +118,7 @@ def get_car(position_x, position_y):
         'vertex' : wheel2,
         'translation' : (position_x+0.15, position_y-0.10),
         'rotation' : 0.,
+        'scaling' : (1., 1.),
         'color' : wheel_out_color,
         'mode' : GL_POLYGON,
         'update': upd_func_wheel

@@ -82,12 +82,13 @@ def main():
 
     objects = []
 
-    objects += (tree.get_tree(0.0, 0.0))
+    
     objects += (house.get_house(0.0, 0.0))
     objects += (car.get_car(0.7, 0.8))
     objects += (woman.get_woman(-0.7, -0.8))
     objects += (surface.get_surface())
     objects += (sun.get_sun(0.0, 0.0))
+    objects += (tree.get_tree(0.0, 0.0))
 
     to_callback = []
     for obj in objects:
@@ -96,7 +97,7 @@ def main():
     
     def key_event(window, key, scancode, action, mods):
         for obj in to_callback:
-            obj['translation'], obj['rotation'] = obj['update'](obj['translation'], obj['rotation'], key)
+            obj['translation'], obj['rotation'], obj['scaling'] = obj['update'](obj['translation'], obj['rotation'], obj['scaling'],key)
     
     glfw.set_key_callback(window, key_event)
     for obj in objects:
@@ -127,8 +128,13 @@ def main():
                                         0.0, 0.0, 1.0, 0.0, 
                                         0.0, 0.0, 0.0, 1.0], np.float32)
 
-            mat_transform = mat_translation.reshape((4, 4)) @ mat_rotation.reshape((4, 4))
-            print(mat_transform)
+            mat_scaling = np.array([    obj['scaling'][0], 0.0, 0.0, 0.0, 
+                                        0.0, obj['scaling'][1], 0.0, 0.0, 
+                                        0.0, 0.0,            1.0, 0.0, 
+                                        0.0, 0.0,            0.0, 1.0], np.float32)
+
+            mat_transform = mat_translation.reshape((4, 4)) @ mat_rotation.reshape((4, 4)) @ mat_rotation.reshape((4, 4)) @ mat_scaling.reshape((4,4))
+
             loc = glGetUniformLocation(program, "mat_transformation")
             glUniformMatrix4fv(loc, 1, GL_TRUE, mat_transform)
             glUniform4f(loc_color, obj['color']['R'], obj['color']['G'], obj['color']['B'], 1.0)
