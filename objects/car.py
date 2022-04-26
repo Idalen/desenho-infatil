@@ -48,9 +48,9 @@ def get_car(position_x, position_y):
         'translation' : (position_x, position_y),
         'rotation' : 0.0,
         'scaling' : (1., 1.),
-        'color' : {"R":1.,
-                   "G":.60, 
-                   "B":.0},
+        'color' : {"R":148/255,
+                   "G":.0/255, 
+                   "B":211./255},
         'mode' : GL_POLYGON,
         'update' : upd_func_body
     }

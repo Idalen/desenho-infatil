@@ -57,7 +57,7 @@ def get_sun(position_x, position_y):
         'rotation' : .0,
         'scaling' : (1., 1.),
         'color' : {"R":255/255,
-                   "G":150/255, 
+                   "G":140/255, 
                    "B":  1/255,},
         'mode' : GL_POLYGON,
         'constant' : always_rotate
@@ -75,4 +75,4 @@ def get_sun(position_x, position_y):
         'constant': always_rotate
     }
 
-    return [sun_1, sun_2]
+    return [sun_2, sun_1]
