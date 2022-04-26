@@ -88,7 +88,6 @@ def main():
     objects += (surface.get_surface())
     objects += (sun.get_sun(0.0, 0.0))
 
-
     to_callback = []
     for obj in objects:
         if 'update' in obj:
