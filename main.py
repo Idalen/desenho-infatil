@@ -79,7 +79,7 @@ def main():
     program = init_program()
 
     objects = []
-    objects+=(tree.get_tree(-0.2, -0.5))
+    objects+=(tree.get_tree(0, 0))
     objects+=(house.get_house(0.0, 0.0))
     objects+=(surface.get_surface())
     total_vertices = []
