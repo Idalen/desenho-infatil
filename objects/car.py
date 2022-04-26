@@ -2,7 +2,7 @@ from .base import *
 
 def get_car(position_x, position_y):
 
-    def upd_func_body(trans, rot, keypress):
+    def upd_func_body(trans, rot, scaling, keypress):
         if keypress == 263:
             trans = (trans[0] - 0.01, trans[1])
         elif keypress == 262:
