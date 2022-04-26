@@ -79,15 +79,18 @@ def main():
     program = init_program()
 
     objects = []
-    objects+=(tree.get_tree(-0.2, -0.5))
-    objects+=(house.get_house(0.0, 0.0))
-    total_vertices = []
-    for obj in objects:
-        total_vertices+=obj['vertex']
+    objects += (tree.get_tree(-0.2, -0.5))
+    objects += (house.get_house(0.0, 0.0))
+    objects += (sun.get_sun(0.0, 0.0))
 
-    vertices = np.zeros(len(total_vertices), [('position', np.float32, 2)])
+    vertices = np.concatenate([obj['vertex'] for obj in objects])
+    # for obj in objects:
+    #     print(objects)
+    #     total_vertices+=obj['vertex']
+
+    # vertices = np.zeros(len(total_vertices), [('position', np.float32, 2)])
     # print(repr(vertices))
-    vertices['position'] = total_vertices
+    # vertices['position'] = total_vertices
     # print(repr(vertices))
 
     buffer_data(program, vertices)
