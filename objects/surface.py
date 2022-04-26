@@ -3,8 +3,8 @@ from .base import *
 def get_surface():
     surface = {
         "vertex" : make_pair_vec(
-            [(-1.0, 0.25),
-             (1.0, 0.25),
+            [(-1.0, 0.0),
+             (1.0, 0.0),
              (1.0, -1.0),
              (-1.0, -1.0)]
         ),

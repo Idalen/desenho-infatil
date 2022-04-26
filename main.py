@@ -82,10 +82,10 @@ def main():
 
     objects = []
 
-    objects += (house.get_house(0.0, 0.0))
-    objects += (tree.get_tree(-0.8, 0.35))
-    objects += (car.get_car(.0, 0.4))
-    objects += (woman.get_woman(0.7, 0.4))
+    objects += (house.get_house(0.0, -0.25))
+    objects += (tree.get_tree(-0.8, 0.1))
+    objects += (car.get_car(.0, 0.15))
+    objects += (woman.get_woman(0.7, 0.15))
     objects += (surface.get_surface())
     objects += (sun.get_sun(0.5, 0.8))
 
