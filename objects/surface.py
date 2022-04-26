@@ -10,6 +10,7 @@ def get_surface():
         ),
         "translation": (0,0),
         'rotation' : 0.0,
+        "scaling" : (1., 1.),
         "color" : { "R":128.0/255,
                     "G":132.0/255, 
                     "B": 136.0/255},

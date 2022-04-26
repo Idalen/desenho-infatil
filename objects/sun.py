@@ -54,7 +54,9 @@ def get_sun(position_x, position_y):
     sun_1 = {
         'vertex' : vertices,
         'translation' : (position_x, position_y),
-        'rotation' : .0,
+
+        'rotation' : 0.0,
+        'scaling' :(1., 1.),
         'color' : {"R":255/255,
                    "G":150/255, 
                    "B":  1/255,},
@@ -65,7 +67,8 @@ def get_sun(position_x, position_y):
     sun_2 = {
         'vertex' : vertices2,
         'translation' : (position_x, position_y),
-        'rotation' : .0,
+        'rotation' : 0.0,
+        'scaling' :(1., 1.),
         'color' : {"R":255/255,
                    "G":204/255, 
                    "B":51/255,},
