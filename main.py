@@ -7,7 +7,7 @@ from objects import *
 def init_window():
     glfw.init()
     glfw.window_hint(glfw.VISIBLE, glfw.FALSE)
-    window = glfw.create_window(720, 600, "Main", None, None)
+    window = glfw.create_window(1200, 600, "Main", None, None)
     glfw.make_context_current(window)
 
     return window
@@ -80,11 +80,13 @@ def main():
     program = init_program()
 
     objects = []
-    objects += (tree.get_tree(-0.2, -0.5))
+
+    objects += (tree.get_tree(0.0, 0.0))
     objects += (house.get_house(0.0, 0.0))
     objects += (sun.get_sun(0.0, 0.0))
     objects += (car.get_car(0.7, 0.8))
     objects += (woman.get_woman(-0.7, -0.8))
+    objects+=(surface.get_surface())
 
     to_callback = []
     for obj in objects:
@@ -109,7 +111,7 @@ def main():
         glfw.poll_events() 
         
         glClear(GL_COLOR_BUFFER_BIT) 
-        glClearColor(1.0, 1.0, 1.0, 1.0)
+        glClearColor(135/255, 206/255, 235/255, 1.0)
 
         vertex_acc = 0
         for obj in objects:
