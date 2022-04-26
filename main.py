@@ -73,25 +73,33 @@ def buffer_data(program,vertices):
 
     glVertexAttribPointer(loc, 2, GL_FLOAT, False, stride, offset)
 
+    
 
 def main():
     window = init_window()
     program = init_program()
 
     objects = []
-    objects+=(tree.get_tree(0, 0))
-    objects+=(house.get_house(0.0, 0.0))
+
+    objects += (tree.get_tree(0.0, 0.0))
+    objects += (house.get_house(0.0, 0.0))
+    objects += (sun.get_sun(0.0, 0.0))
+    objects += (car.get_car(0.7, 0.8))
+    objects += (woman.get_woman(-0.7, -0.8))
     objects+=(surface.get_surface())
-    total_vertices = []
+
+    to_callback = []
     for obj in objects:
-        total_vertices+=obj['vertex']
+        if 'update' in obj:
+            to_callback.append(obj)
+    
+    def key_event(window, key, scancode, action, mods):
+        for obj in to_callback:
+            obj['translation'], obj['rotation'] = obj['update'](obj['translation'], obj['rotation'], key)
+    
+    glfw.set_key_callback(window, key_event)
 
-    print(total_vertices)
-    vertices = np.zeros(len(total_vertices), [('position', np.float32, 2)])
-    # print(repr(vertices))
-    vertices['position'] = total_vertices
-    # print(repr(vertices))
-
+    vertices = np.concatenate([obj['vertex'] for obj in objects])
     buffer_data(program, vertices)
 
     loc_color = glGetUniformLocation(program, "color")
@@ -107,7 +115,6 @@ def main():
 
         vertex_acc = 0
         for obj in objects:
-
             mat_translation = np.array([1.0, 0.0, 0.0, obj["translation"][0], 
                                         0.0, 1.0, 0.0, obj["translation"][1], 
                                         0.0, 0.0, 1.0, 0.0, 
