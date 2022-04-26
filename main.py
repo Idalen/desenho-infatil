@@ -88,7 +88,6 @@ def main():
     objects += (woman.get_woman(-0.7, -0.8))
     objects += (surface.get_surface())
 
-
     to_callback = []
     for obj in objects:
         if 'update' in obj:

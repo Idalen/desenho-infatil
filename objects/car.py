@@ -19,6 +19,7 @@ def get_car(position_x, position_y):
             (0.25, -0.1)
         ]),
         'translation' : (position_x, position_y),
+        'rotation' : 0.0,
         'color' : {"R":.78,
                    "G":.39, 
                    "B":.33},
@@ -64,6 +65,7 @@ def get_car(position_x, position_y):
     wheel_inside1 = {
         'vertex' : wheel_in,
         'translation' : (position_x, position_y),
+        'rotation' : 0.0,
         'color' : wheel_in_color,
         'mode' : GL_POLYGON,
     }
@@ -71,6 +73,7 @@ def get_car(position_x, position_y):
     wheel_inside2 = {
         'vertex' : wheel_in2,
         'translation' : (position_x, position_y),
+        'rotation' : 0.0,
         'color' : wheel_in_color,
         'mode' : GL_POLYGON,
     }
@@ -78,12 +81,14 @@ def get_car(position_x, position_y):
     wheel_outside1 = {
         'vertex' : wheel,
         'translation' : (position_x, position_y),
+        'rotation' : 0.0,
         'color' : wheel_out_color,
         'mode' : GL_POLYGON,
     }
     wheel_outside2 = {
         'vertex' : wheel2,
         'translation' : (position_x, position_y),
+        'rotation' : 0.0,
         'color' : wheel_out_color,
         'mode' : GL_POLYGON,
     }

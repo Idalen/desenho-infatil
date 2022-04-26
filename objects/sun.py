@@ -45,6 +45,7 @@ def get_sun(position_x, position_y):
     sun_1 = {
         'vertex' : vertices,
         'translation' : (position_x, position_y),
+        'rotation' : 0.0,
         'color' : {"R":.78,
                    "G":.39, 
                    "B":.33,},
@@ -54,6 +55,7 @@ def get_sun(position_x, position_y):
     sun_2 = {
         'vertex' : vertices2,
         'translation' : (position_x, position_y),
+        'rotation' : 0.0,
         'color' : {"R":.78,
                    "G":.39, 
                    "B":.33,},

@@ -1,7 +1,7 @@
 from .base import *
 
 def circle(n_vertex, radius):
-    vertex = np.zeros(n_vertex, [("position", np.float32, 2)])
+    vertex = np.zeros(n_vertex, POSITION_DT)
     angle = 0.0
     for i in range(n_vertex):
         angle += 2*math.pi/n_vertex
@@ -18,6 +18,7 @@ def get_woman(position_x, position_y):
              (+0.3, -0.5)]
         ),
         "translation": (position_x, position_y),
+        'rotation' : 0.0,
         "color" : { "R":1.,
                     "G":0., 
                     "B":0.},
@@ -32,6 +33,7 @@ def get_woman(position_x, position_y):
              (-0.1, -0.7)],
         ),
         "translation": (position_x, position_y),
+        'rotation' : 0.0,
         "color" : { "R":0.,
                     "G":0., 
                     "B":0.},
@@ -46,6 +48,7 @@ def get_woman(position_x, position_y):
              (+0.1, -0.7)]
         ),
         "translation": (position_x, position_y),
+        'rotation' : 0.0,
         "color" : { "R":0.,
                     "G":0., 
                     "B":0.},
@@ -60,6 +63,7 @@ def get_woman(position_x, position_y):
              (-0.3, -0.15)]
         ),
         "translation": (position_x, position_y),
+        'rotation' : 0.0,
         "color" : { "R":0.,
                     "G":0., 
                     "B":0.},
@@ -74,6 +78,7 @@ def get_woman(position_x, position_y):
              (0.3, -0.15)]
         ),
         "translation": (position_x, position_y),
+        'rotation' : 0.0,
         "color" : { "R":0.,
                     "G":0., 
                     "B":0.},
@@ -83,6 +88,7 @@ def get_woman(position_x, position_y):
     head = {
         "vertex" : np.zeros(64, POSITION_DT),
         "translation": (position_x, position_y),
+        'rotation' : 0.0,
         "color" : { "R":0.,
                     "G":0., 
                     "B":0.},
