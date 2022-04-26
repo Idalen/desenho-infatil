@@ -83,6 +83,7 @@ def main():
     objects += (house.get_house(0.0, 0.0))
     objects += (sun.get_sun(0.0, 0.0))
     objects += (car.get_car(0.7, 0.8))
+    objects += (woman.get_woman(-0.7, -0.8))
 
     vertices = np.concatenate([obj['vertex'] for obj in objects])
     buffer_data(program, vertices)
