@@ -19,32 +19,32 @@ def get_sun(position_x, position_y):
     vertices2 = np.zeros(360, [("position", np.float32, 2)])
 
     for i in range(360):
-        fX = math.sin(i * DEG_IN_RAD) * 0.05 
-        fY = math.cos(i * DEG_IN_RAD) * 0.05 
+        fX = math.cos(i * DEG_IN_RAD) * 0.05 
+        fY = math.sin(i * DEG_IN_RAD) * 0.05 
         vertices['position'][i] = (fX, fY)
 
     for i in range(360):
         if shouldDrawTriangle:
             if degCounter == 0:
-                fX = math.sin(i * DEG_IN_RAD) * 0.06
-                fY = math.cos(i * DEG_IN_RAD) * 0.06
+                fX = math.cos(i * DEG_IN_RAD) * 0.06
+                fY = math.sin(i * DEG_IN_RAD) * 0.06
                 vertices2['position'][i] = (fX, fY)
             if degCounter == triangleMaxDeg/2:
-                fX = math.sin(i * DEG_IN_RAD) * 0.08
-                fY = math.cos(i * DEG_IN_RAD) * 0.08
+                fX = math.cos(i * DEG_IN_RAD) * 0.08
+                fY = math.sin(i * DEG_IN_RAD) * 0.08
                 vertices2['position'][i] = (fX, fY)
             if degCounter == triangleMaxDeg:
                 degCounter = 0
                 lastTriangle = i
                 shouldDrawTriangle = False
-                fX = math.sin(i * DEG_IN_RAD) * 0.06
-                fY = math.cos(i * DEG_IN_RAD) * 0.06
+                fX = math.cos(i * DEG_IN_RAD) * 0.06
+                fY = math.sin(i * DEG_IN_RAD) * 0.06
                 vertices2['position'][i] = (fX, fY)
             degCounter = degCounter + 1
 
         else:
-            fX = math.sin(i * DEG_IN_RAD) * 0.06
-            fY = math.cos(i * DEG_IN_RAD) * 0.06
+            fX = math.cos(i * DEG_IN_RAD) * 0.06
+            fY = math.sin(i * DEG_IN_RAD) * 0.06
             vertices2['position'][i] = (fX, fY)
             if i - lastTriangle >= 5:
                 shouldDrawTriangle = True
