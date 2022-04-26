@@ -83,11 +83,11 @@ def main():
     objects = []
 
     objects += (house.get_house(0.0, 0.0))
-    objects += (tree.get_tree(-0.8, 0.35))
     objects += (car.get_car(.0, 0.4))
     objects += (woman.get_woman(-0.7, -0.8))
     objects += (surface.get_surface())
     objects += (sun.get_sun(0.5, 0.8))
+    objects += (tree.get_tree(-0.8, 0.35))
 
     to_callback = []
     for obj in objects:
@@ -104,9 +104,6 @@ def main():
     
 
     # constant
-
-    for obj in objects:
-        print(obj['vertex'])
     vertices = np.concatenate([obj['vertex'] for obj in objects])
     buffer_data(program, vertices)
 
@@ -128,6 +125,7 @@ def main():
                 obj['rotation'] = obj['constant'](obj['rotation'], 0.005)
 
         for obj in objects:
+
             mat_translation = np.array([1.0, 0.0, 0.0, obj["translation"][0], 
                                         0.0, 1.0, 0.0, obj["translation"][1], 
                                         0.0, 0.0, 1.0, 0.0, 
@@ -139,8 +137,11 @@ def main():
                                         0.0, 0.0, 1.0, 0.0, 
                                         0.0, 0.0, 0.0, 1.0], np.float32)
 
-            mat_transform = mat_translation.reshape((4, 4)) @ mat_rotation.reshape((4, 4))
-            print(mat_transform)
+            mat_scaling = np.array([    obj['scaling'][0], 0.0, 0.0, 0.0, 
+                                        0.0, obj['scaling'][1], 0.0, 0.0, 
+                                        0.0, 0.0, 1.0, 0.0, 
+                                        0.0, 0.0, 0.0, 1.0], np.float32)
+            mat_transform = mat_translation.reshape((4, 4)) @ mat_rotation.reshape((4, 4)) @ mat_scaling.reshape((4,4)) 
             loc = glGetUniformLocation(program, "mat_transformation")
             glUniformMatrix4fv(loc, 1, GL_TRUE, mat_transform)
             glUniform4f(loc_color, obj['color']['R'], obj['color']['G'], obj['color']['B'], 1.0)
