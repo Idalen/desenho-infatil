@@ -84,11 +84,11 @@ def main():
 
     
     objects += (house.get_house(0.0, 0.0))
-    objects += (car.get_car(0.7, 0.8))
+    objects += (car.get_car(0.0, 0.4))
     objects += (woman.get_woman(-0.7, -0.8))
     objects += (surface.get_surface())
     objects += (sun.get_sun(0.0, 0.0))
-    objects += (tree.get_tree(0.0, 0.0))
+    objects += (tree.get_tree(-0.8, 0.35))
 
     to_callback = []
     for obj in objects:
