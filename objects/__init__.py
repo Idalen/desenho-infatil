@@ -1,1 +1,1 @@
-__all__ = ['tree', 'house', 'sun']
+__all__ = ['tree', 'house', 'sun', 'car']

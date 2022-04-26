@@ -82,17 +82,9 @@ def main():
     objects += (tree.get_tree(-0.2, -0.5))
     objects += (house.get_house(0.0, 0.0))
     objects += (sun.get_sun(0.0, 0.0))
+    objects += (car.get_car(0.7, 0.8))
 
     vertices = np.concatenate([obj['vertex'] for obj in objects])
-    # for obj in objects:
-    #     print(objects)
-    #     total_vertices+=obj['vertex']
-
-    # vertices = np.zeros(len(total_vertices), [('position', np.float32, 2)])
-    # print(repr(vertices))
-    # vertices['position'] = total_vertices
-    # print(repr(vertices))
-
     buffer_data(program, vertices)
 
     loc_color = glGetUniformLocation(program, "color")

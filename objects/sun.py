@@ -41,7 +41,6 @@ def get_sun(position_x, position_y):
                 shouldDrawTriangle = True
 
     vertices2 = vertices2[~np.all(vertices2['position'] == 0, axis=1)]
-    print(vertices2)
 
     sun_1 = {
         'vertex' : vertices,
