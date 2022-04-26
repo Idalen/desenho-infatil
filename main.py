@@ -85,7 +85,7 @@ def main():
     objects += (house.get_house(0.0, 0.0))
     objects += (tree.get_tree(-0.8, 0.35))
     objects += (car.get_car(.0, 0.4))
-    objects += (woman.get_woman(-0.7, -0.8))
+    objects += (woman.get_woman(0.7, 0.4))
     objects += (surface.get_surface())
     objects += (sun.get_sun(0.5, 0.8))
 
@@ -98,7 +98,7 @@ def main():
     def key_event(window, key, scancode, action, mods):
         for obj in to_callback:
             obj['translation'], obj['rotation'], obj['scaling'] = obj['update'](obj['translation'], obj['rotation'], obj['scaling'],key)
-            
+
     glfw.set_key_callback(window, key_event)
     
     

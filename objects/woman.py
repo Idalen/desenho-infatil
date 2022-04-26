@@ -14,8 +14,8 @@ def get_woman(position_x, position_y):
     dress = {
         "vertex" : make_pair_vec(
             [( 0.0,  0.0), 
-             (-0.3, -0.5),
-             (+0.3, -0.5)]
+             (-0.06, -0.1),
+             (+0.06, -0.1)]
         ),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
@@ -27,10 +27,10 @@ def get_woman(position_x, position_y):
 
     left_leg = {
         "vertex" : make_pair_vec(
-            [(-0.05, -0.5),
-             (-0.05, -0.7),
-             (-0.1, -0.5),
-             (-0.1, -0.7)],
+            [(-0.01, -0.1),
+             (-0.01, -0.15),
+             (-0.02, -0.1),
+             (-0.02, -0.15)],
         ),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
@@ -42,10 +42,10 @@ def get_woman(position_x, position_y):
 
     right_leg = {
         "vertex" : make_pair_vec(
-            [(+0.05, -0.5),
-             (+0.05, -0.7),
-             (+0.1, -0.5),
-             (+0.1, -0.7)]
+            [(+0.01, -0.1),
+             (+0.01, -0.15),
+             (+0.02, -0.1),
+             (+0.02, -0.15)]
         ),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
@@ -57,10 +57,10 @@ def get_woman(position_x, position_y):
 
     left_arm = {
         "vertex" : make_pair_vec(
-            [(-0.08, -0.2),
-             (-0.08, -0.15),
-             (-0.3, -0.2),
-             (-0.3, -0.15)]
+            [(-0.015, -0.04),
+             (-0.015, -0.03),
+             (-0.06, -0.04),
+             (-0.06, -0.03)]
         ),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
@@ -72,10 +72,10 @@ def get_woman(position_x, position_y):
 
     right_arm = {
         "vertex" : make_pair_vec(
-            [(0.08, -0.2),
-             (0.08, -0.15),
-             (0.3, -0.2),
-             (0.3, -0.15)]
+            [(0.015, -0.04),
+             (0.015, -0.03),
+             (0.06, -0.04),
+             (0.06, -0.03)]
         ),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
@@ -85,8 +85,12 @@ def get_woman(position_x, position_y):
         "mode" : GL_TRIANGLE_STRIP
     }
 
+    n_vertex = 360
+    radius = 0.03
+    angle = 0.0
+    
     head = {
-        "vertex" : np.zeros(64, POSITION_DT),
+        "vertex" : np.zeros(n_vertex, POSITION_DT),
         "translation": (position_x, position_y),
         'rotation' : 0.0,
         "color" : { "R":0.,
@@ -95,9 +99,6 @@ def get_woman(position_x, position_y):
         "mode" : GL_TRIANGLE_FAN
 
     }
-    n_vertex = 64
-    radius = 0.15
-    angle = 0.0
     for i in range(n_vertex):
         angle += 2*math.pi/n_vertex
         x = math.cos(angle) * radius

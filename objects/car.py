@@ -7,7 +7,11 @@ def get_car(position_x, position_y):
             trans = (trans[0] - 0.01, trans[1])
         elif keypress == 262:
             trans = (trans[0] + 0.01, trans[1])
-
+        elif keypress == 65:
+            trans = (trans[0] - 0.01, trans[1])
+        elif keypress == 83:
+            trans = (trans[0] + 0.01, trans[1])
+        
         return trans, rot, scaling
 
     def upd_func_wheel(trans, rot, scaling, keypress):
@@ -17,8 +21,14 @@ def get_car(position_x, position_y):
             trans = (trans[0] + 0.01, trans[1])
         elif keypress == 65:
             rot += 0.1
+            trans = (trans[0] - 0.01, trans[1])   
         elif keypress == 83:
             rot -= 0.1
+            trans = (trans[0] + 0.01, trans[1])
+        elif keypress == 68:
+            rot += 0.1
+        elif keypress == 70:
+            rot -= 0.1    
         
         return trans, rot, scaling
 
