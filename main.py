@@ -7,7 +7,7 @@ from objects import *
 def init_window():
     glfw.init()
     glfw.window_hint(glfw.VISIBLE, glfw.FALSE)
-    window = glfw.create_window(720, 600, "Main", None, None)
+    window = glfw.create_window(1200, 600, "Main", None, None)
     glfw.make_context_current(window)
 
     return window
@@ -81,10 +81,12 @@ def main():
     objects = []
     objects+=(tree.get_tree(-0.2, -0.5))
     objects+=(house.get_house(0.0, 0.0))
+    objects+=(surface.get_surface())
     total_vertices = []
     for obj in objects:
         total_vertices+=obj['vertex']
 
+    print(total_vertices)
     vertices = np.zeros(len(total_vertices), [('position', np.float32, 2)])
     # print(repr(vertices))
     vertices['position'] = total_vertices
@@ -101,7 +103,7 @@ def main():
         glfw.poll_events() 
         
         glClear(GL_COLOR_BUFFER_BIT) 
-        glClearColor(1.0, 1.0, 1.0, 1.0)
+        glClearColor(135/255, 206/255, 235/255, 1.0)
 
         vertex_acc = 0
         for obj in objects:
